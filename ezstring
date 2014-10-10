@@ -31,13 +31,13 @@ fi
 
 
 echo "$@" | \
-    sed -e "s/[\\/\.;':,()!?-]//g"  \
+    sed -e "s/[\\/\.;':,()!?-+]//g" \
         -e "s/[ \t]*$//"            \
-        -e "s/ /-/g"                \
+        -e "s/ \+/-/g"                \
         -e "s/&/and/g"              \
         -e "s/\(.*\)/\L\1/g"
       # 1. remove punctuation
       # 2. remove trailing whitespace
-      # 3. ' ' -> '-'
+      # 3. 1 or more ' ' -> '-'
       # 4. '&' -> 'and'
       # 5. to lowercase
